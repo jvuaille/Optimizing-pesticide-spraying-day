@@ -1,0 +1,98 @@
+;; products.dai --- Products parameterization
+;;
+;; Active ingredients and metabolites parameters
+;; Description of Hussar, Atlantis, and DFF products
+
+(defchemical iodosulfuron-methyl-sodium herbicide
+  ;; From PPDB.
+  (molar_mass 529.24 [g/mol])
+  ;; From Bayer.
+  (surface_decompose_halftime 3.2 [d])
+  (enable_surface_products true)
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 3.2 [d])
+  (decompose_products (0.55 [] metsulfuron-methyl))
+  (adsorption Freundlich (K_OC 33.4 [mL/g]) (m 0.87 []) (C_ref 1 [mg/L]))
+  (drain_secondary true))
+
+(defchemical metsulfuron-methyl metabolite
+  ;; From PPDB.
+  (molar_mass 381.36 [g/mol])
+  ;; From Bayer.
+  (surface_decompose_halftime 13.2 [d])
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 13.2 [d])
+  (adsorption Freundlich (K_OC 14.0 [mL/g]) (m 1.0 []) (C_ref 1 [mg/L]))
+  (drain_secondary true))
+
+(defchemical mesosulfuron-methyl herbicide
+  ;; From PPDB.
+  (molar_mass 503.51 [g/mol])
+  ;; From Bayer.
+  (surface_decompose_halftime 34.1 [d])
+  (enable_surface_products true)
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 34.1 [d])
+  (adsorption Freundlich (K_OC 64.0 [mL/g]) (m 0.91 []) (C_ref 1 [mg/L]))
+  (drain_secondary true))
+
+(defchemical "Bromide" classic
+  "For Bromide."
+  (diffusion_coefficient 2.0e-5 [cm^2/s])
+  ;;(solute (adsorption none))
+  (crop_uptake_reflection_factor 0 [])
+  (canopy_dissipation_rate 0 [h^-1])
+  (decompose_rate 0 [h^-1])
+  (C_below const 0 [g/cm^3])
+  (drain_secondary true))  
+
+(defchemical diflufenican herbicide
+  ;; From PPDB / middeldatabasen 
+  (molar_mass 394.295 [g/mol])
+  ;; From Bayer.
+  (surface_decompose_halftime 128 [d])
+  (enable_surface_products true)
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 128 [d]) ; normalt 128, lower range fra PPDB er 44.3 
+  (adsorption Freundlich (K_OC 3417 [mL/g]) (m 0.917 [])(C_ref 1 [mg/L])) ;; From IUPAC
+  (decompose_products (0.168 [] AE-B107137) (0.263 [] AE-05422291))
+  (canopy_dissipation_halftime 6.14 [d])
+  (drain_secondary true))   
+
+(defchemical AE-B107137 herbicide ; 2-(3-trifluromethylphenoxy)nicotinic acid // 2-[3-trifluromethyl)phenoxy]pyridine-3-carboxylic acid 
+  ;; From IUPCA
+  (molar_mass 283.20 [g/mol])
+  (surface_decompose_halftime 10.6 [d])
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 10.6 [d])
+  (adsorption Freundlich (K_OC 13 [mL/g]) (m 0.73 []) (C_ref 1 [mg/L]))
+  (drain_secondary true))
+
+(defchemical AE-05422291 herbicide ; 2-(3-trifluromethylphenoxy)nicotinamide // 2-[3-(trifluromethyl)phenoxy]pyridine-3-carboxamide
+  ;; From IUPCA
+  (molar_mass 282 [g/mol])
+  (surface_decompose_halftime 26.9 [d])
+  (soil_affects_surface_decompose true) ;; make surface decomposition like soil decomposition
+  (decompose_halftime 26.9 [d])
+  (adsorption Freundlich (K_OC 132 [mL/g]) (m 0.81) (C_ref 1 [mg/L]))
+  (drain_secondary true))
+
+;; Description of Hussar  
+(defchemistry SB default
+  (trace iodosulfuron-methyl-sodium metsulfuron-methyl))
+
+;; Description of Atlantis  
+(defchemistry WW default
+  (trace iodosulfuron-methyl-sodium metsulfuron-methyl
+  	 mesosulfuron-methyl))
+
+;; Description of DFF 
+(defchemistry DFF default
+  (trace diflufenican
+    	 AE-B107137
+    	 AE-05422291))
+
+;; Description of bromide 
+(defchemistry Bromide default
+  "Bromide everywhere"
+  (trace Bromide))

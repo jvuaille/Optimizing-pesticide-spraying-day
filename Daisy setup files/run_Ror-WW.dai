@@ -1,0 +1,46 @@
+;;; run_Ror_WW.dai
+
+(path &old "../data" "../.")
+
+(input file "chemistry-base.dai")
+(input file "log.dai")
+(input file "soil.dai")
+(input file "products.dai")
+(input file "log_files.dai")
+(input file "crop_management.dai")
+(input file "climate.dai")
+       
+;;; defining program
+(defprogram "WW_spray_all" Daisy
+  ;; Select soil and chemicals to track.
+  (column ("Rorrende 2D" (Chemistry WW-all)))
+  ;;(column Fast)
+  ;; Select crop and products to apply.
+  (manager "WW Spray")
+  ;; Select climate.
+  (weather CPH)
+  ;; Simulation period.
+  (time 1962 01 04)
+  (activate_output (after 1963 01 01))
+  (stop 4961 12 25)
+  ;; Selecting output 
+  (description "Ror WW")
+  (output (Crop (crop "WW") (when daily))
+	  harvest	
+	  (checkpoint (when yearly) (where "Ror-WW"))
+	  "Daily DFF WW AUTUMN"
+	  "Drain DFF WW AUTUMN"
+	  "Surface DFF WW AUTUMN"
+	  "Daily DFF WW SPRING"
+	  "Drain DFF WW SPRING"
+	  "Surface DFF WW SPRING"
+	  "Daily Hussar OD WW"
+	  "Drain Hussar OD WW"
+	  "Surface Hussar OD WW"
+	  "Daily Atlantis OD"
+	  "Drain Atlantis OD"
+	  "Surface Atlantis OD")) 	
+
+(run "WW_spray_all")
+
+;; run_Ror-WW.dai ends here.                	

@@ -1,0 +1,480 @@
+;;; soil.dai contains a description of the soil horizons, biopores and pressure limits for secondary domain used at the sites: Flakkebjerg, Rorrendegaard, Estrup and SIlstrup in RAINPROOF
+
+;; Soil Horizons 
+			 ;Flakkebjerg 
+(defhorizon "Flakkebjerg Ap" ISSS4
+(description "3-15 cm")
+(clay 0.157) (silt 0.133) (fine_sand 0.476) (coarse_sand 0.21) (humus 0.024)
+(dry_bulk_density 1.52 [g/cm^3])
+(hydraulic hypres (topsoil true)) 
+(secondary_domain none)
+)
+
+(defhorizon "Flakkebjerg Ap ani" ISSS4
+(description "15-25 cm")
+(clay 0.157) (silt 0.133) (fine_sand 0.476) (coarse_sand 0.21) (humus 0.024)
+(dry_bulk_density 1.52 [g/cm^3])
+(hydraulic hypres (topsoil true))
+(secondary_domain none)
+(anisotropy 10) 
+)
+
+(defhorizon "Flakkebjerg Ap surface" "Flakkebjerg Ap" 
+(description "0-3 cm")
+(hydraulic hypres (K_sat 0.58 [cm/h])) 
+(anisotropy 10) 
+) 
+
+
+(defhorizon "Flakkebjerg Ap surface WT" "Flakkebjerg Ap" 
+(description "0-3 cm")
+(hydraulic hypres (K_sat 0.04 [cm/h])) 
+)
+
+(defhorizon "Flakkebjerg Bplow" ISSS4
+(description "25-33 cm")
+(clay 0.175) (silt 0.125) (fine_sand 0.458) (coarse_sand 0.24) (humus 0.002)
+(dry_bulk_density 1.78 [g/cm^3]) ; bulk density from Ror 
+(hydraulic hypres)
+(secondary_domain none)
+)
+
+(defhorizon "Flakkebjerg Bt" ISSS4
+(description "25-100 cm")
+(clay 0.175) (silt 0.125) (fine_sand 0.458) (coarse_sand 0.24) (humus 0.002)
+(dry_bulk_density 1.7 [g/cm^3])
+(secondary_domain none)
+)
+
+(defhorizon "Flakkebjerg Cc(g)" ISSS4
+(description "100-200 cm")
+(clay 0.125) (silt 0.12) (fine_sand 0.392) (coarse_sand 0.150) (humus 0.001) ; (chalk 0.21)
+(normalize true) 
+(dry_bulk_density 1.83 [g/cm^3])
+(secondary_domain none)
+)
+
+			 ; Rorrendegaard
+(defhorizon "Rorrende Ap" USDA3
+  (description "3-15 cm")
+  (clay 0.107)(silt 0.222)(sand 0.671)(humus 0.024)
+  (dry_bulk_density 1.45 [g/cm^3])
+  (hydraulic hypres
+  (topsoil true))
+  (secondary_domain none)
+  )
+  
+(defhorizon "Rorrende Ap ani" USDA3
+  (description "15-25 cm")
+  (clay 0.107)(silt 0.222)(sand 0.671)(humus 0.024)
+  (dry_bulk_density 1.45 [g/cm^3])
+  (hydraulic hypres
+  (topsoil true))
+  (anisotropy 10) 
+  (secondary_domain none)
+  )
+  
+(defhorizon "Rorrende Ap surface WT" "Rorrende Ap"
+  (description "0-3 cm")
+  (hydraulic hypres
+  	(K_sat 0.04 [cm/h])))
+             
+
+(defhorizon "Rorrende Ap surface" "Rorrende Ap"
+  (description "0-3 cm")
+  (hydraulic hypres
+  	(K_sat 1.14155[cm/h]))
+  (anisotropy 10)
+  (secondary_domain none)
+  )
+             
+
+(defhorizon "Rorrende Bplow" USDA3
+  (description "25-33 cm") 
+  (clay 0.148)(silt 0.214)(sand 0.638) (humus 0.016)
+  (dry_bulk_density 1.77 [g/cm^3])
+  (hydraulic hypres) ;(K_sat 0.09 [cm/h]))	
+  (secondary_domain none)
+  )               
+
+(defhorizon "Rorrende Bt" USDA3
+  (description "33-120 cm")
+  (clay 0.222)(silt 0.195)(sand 0.583)(humus 0.016)
+  (dry_bulk_density 1.66 [g/cm^3])
+  (secondary_domain none)
+    )  
+                                          
+(defhorizon "Rorrende C" USDA3
+  (description "120-200 cm")
+  (clay 0.207)(silt 0.235)(sand 0.558) (humus 0.01)
+  (dry_bulk_density 1.69 [g/cm^3]) 
+  (secondary_domain none)
+  )
+  
+(defhorizon "Drain_ditch" ISSS4
+  (clay 0.213)(silt 0.190)(coarse_sand 0.244)(fine_sand  0.339)(humus 0.014)
+  (dry_bulk_density 1.65 [g/cm^3])
+  (secondary_domain none)
+  )
+
+			 ; Estrup: common top soil horizons, M5 horizons and M6 horizons
+(defhorizon Surface ISSS4
+"Estrup common surface layer"
+	(clay 0.146) (silt 0.116) (fine_sand 0.329) (coarse_sand 0.368)
+	(humus 0.041) 
+	(dry_bulk_density 1.500 [g/cm^3])
+	(anisotropy 10) ;to calibrate
+	(hydraulic hypres 
+		(topsoil true)
+		(K_sat 0.55575 [cm/h])) ;50% of Ks(Acommon)
+		;(K_sat 0.33345 [cm/h])) ;30% of Ks(Acommon)
+	(secondary_domain none)
+	
+	)
+
+(defhorizon "Surface WT" ISSS4
+"Estrup common surface layer"
+	(clay 0.146) (silt 0.116) (fine_sand 0.329) (coarse_sand 0.368)
+	(humus 0.041) 
+	(dry_bulk_density 1.500 [g/cm^3])
+	;(anisotropy 250)
+	(hydraulic hypres 
+		(topsoil true)
+		(K_sat 0.04 [cm/h]))
+	(secondary_domain none)
+	
+	)
+	
+	
+(defhorizon Acommon ISSS4
+"Estrup common top soil"
+	(clay 0.146) (silt 0.116) (fine_sand 0.329) (coarse_sand 0.368)
+	(humus 0.041) 
+	(dry_bulk_density 1.500 [g/cm^3])
+	(hydraulic hypres 
+	        (topsoil true)
+		(K_sat 1.1115 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon Acommon_anisotropic ISSS4
+"Estrup common top soil with anisotropy from ploughing"
+	(clay 0.146) (silt 0.116) (fine_sand 0.329) (coarse_sand 0.368)
+	(humus 0.041) 
+	(dry_bulk_density 1.500 [g/cm^3])
+	(anisotropy 10) ;to calibrate
+	(hydraulic hypres 
+		(topsoil true)
+		(K_sat 1.1115 [cm/h]))
+	(secondary_domain none)
+	)
+
+(defhorizon Btclay_plowpan ISSS4
+"Estrup Bt clay till pr1 below ploughing layer"
+	(clay 0.363) (silt 0.153) (fine_sand 0.208) (coarse_sand 0.271)
+	(humus 0.005) 
+	(dry_bulk_density 1.78 [g/cm^3]) ; Before 1.73 as the Btclay, but now 1.78 as measured in Rorrendegaard and then K_Sat is estimated based on this
+	(hydraulic hypres) 
+		;(K_sat 0.0443 [cm/h])) ;20%
+		;(K_sat 0.03290 [cm/h])) ;10% of B horizon
+		;(K_sat 0.0664 [cm/h])) ;30% of B horizon
+		;(K_sat 0.1107 [cm/h])) ;50% of B horizon
+	(secondary_domain none)
+	)
+
+(defhorizon Btclay ISSS4
+"Estrup Bt(g) clay till pr1"
+	(clay 0.363) (silt 0.153) (fine_sand 0.208) (coarse_sand 0.271)
+	(humus 0.005) 
+	(dry_bulk_density 1.73 [g/cm^3])
+	(hydraulic hypres 
+		(K_sat 0.2213 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon Bt2clay ISSS4
+"Estrup Bt(g)2 clay till pr1"
+	(clay 0.33) (silt 0.159) (fine_sand 0.216) (coarse_sand 0.293)
+	(humus 0.002) 
+	(dry_bulk_density 1.73 [g/cm^3])
+	(anisotropy 10) ;to simulate cracks
+	(hydraulic hypres 
+		(K_sat 0.2318 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon Ccclay ISSS4
+"Estrup Cc clay till pr1"
+	(clay 0.311) (silt 0.249) (fine_sand 0.051) (coarse_sand 0.023) 
+	(humus 0.005) 
+	(normalize true)
+	(dry_bulk_density 1.78 [g/cm^3])
+	(hydraulic hypres)
+		;(K_sat 0.0712 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon Bssand_plowpan ISSS4
+"Estrup Bs glaciofluvial sand pr3 below ploughing layer"
+	(clay 0.09) (silt 0.047) (fine_sand 0.285) (coarse_sand 0.57)
+		(humus 0.008) 
+	(dry_bulk_density 1.78 [g/cm^3]) ; før 1.69 som i Bssand nu 1.78 som i Rorrendegaard og så er K-sat estimeret på baggrund af det
+	(hydraulic hypres)
+		;(K_sat 0.1885 [cm/h])) ;20%
+		;(K_sat 0.21579 [cm/h])) ;10% of B horizon
+		;(K_sat 0.2828 [cm/h])) ;30% of B horizon
+		;(K_sat 0.4714 [cm/h])) ;50% of B horizon
+	(secondary_domain none)
+	)
+
+(defhorizon Bssand ISSS4
+"Estrup Bs glaciofluvial sand pr3"
+	(clay 0.09) (silt 0.047) (fine_sand 0.285) (coarse_sand 0.57)
+	(humus 0.008) 
+	(dry_bulk_density 1.69 [g/cm^3])
+	(hydraulic hypres 
+		(K_sat 0.9427 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon Bt2sand ISSS4
+"Estrup Bt(g) glaciofluvial sand pr3"
+	(clay 0.12) (silt 0.043) (fine_sand 0.351) (coarse_sand 0.482)
+	(humus 0.004) 
+	(dry_bulk_density 1.69 [g/cm^3])
+	;(anisotropy 10) ;to simulate cracks
+	(hydraulic hypres 
+		(K_sat 0.8432 [cm/h]))
+	(secondary_domain none)
+	)
+		
+(defhorizon Cclay ISSS4
+"Estrup 2C clay till pr3"
+	(clay 0.39) (silt 0.241) (fine_sand 0.26) (coarse_sand 0.009)
+	(humus 0.1) 
+	(dry_bulk_density 1.55 [g/cm^3])
+	(hydraulic hypres 
+		(K_sat 0.0343 [cm/h]))
+	(secondary_domain none)
+	)
+	
+(defhorizon pr2_3C ISSS4
+"Estrup 3C glaciofluvial sand pr2"
+(clay 0.07) (silt 0.023) (fine_sand 0.21) (coarse_sand 0.696)
+(humus 0.001)
+(normalize true)
+(dry_bulk_density 1.59 [g/cm^3])
+(hydraulic hypres)
+(secondary_domain none)
+) 
+
+
+			 ; Silstrup
+(defhorizon "Silstrup Ap" ISSS4
+(description "3-15 cm")
+(clay 0.183) (silt 0.164) (fine_sand 0.385) (coarse_sand 0.235) (humus 0.034)
+(dry_bulk_density 1.42 [g/cm^3])
+(hydraulic hypres (topsoil true)) 
+(normalize true) 
+(secondary_domain none)
+)
+
+(defhorizon "Silstrup Ap ani" ISSS4
+(description "15-25 cm")
+(clay 0.183) (silt 0.164) (fine_sand 0.385) (coarse_sand 0.235) (humus 0.034)
+(dry_bulk_density 1.42 [g/cm^3])
+(hydraulic hypres (topsoil true))
+(secondary_domain none)
+(normalize true) 
+(anisotropy 10) 
+)
+
+(defhorizon "Silstrup Ap surface" "Silstrup Ap" 
+(description "0-3 cm")
+(hydraulic hypres (K_sat 0.655 [cm/h]))
+(normalize true) 
+(anisotropy 10) 
+) 
+
+(defhorizon "Silstrup Bplow" ISSS4
+(description "25-33 cm")
+(clay 0.301) (silt 0.139) (fine_sand 0.343) (coarse_sand 0.21) (humus 0.005)
+(dry_bulk_density 1.78 [g/cm^3]) ; bulk density from Ror 
+(hydraulic hypres)
+(normalize true) 
+(secondary_domain none)
+)
+
+(defhorizon "Silstrup Bv" ISSS4
+(description "33-80 cm")
+(clay 0.301) (silt 0.139) (fine_sand 0.343) (coarse_sand 0.21) (humus 0.005)
+(dry_bulk_density 1.62 [g/cm^3])
+(normalize true) 
+(secondary_domain none)
+)
+
+(defhorizon "Silstrup Bt" ISSS4
+(description "80-135 cm")
+(clay 0.434) (silt 0.186) (fine_sand 0.209) (coarse_sand 0.168) (humus 0.003)
+(dry_bulk_density 1.77 [g/cm^3]) ;fra BC målt i 140 cm dybde
+(normalize true) 
+(secondary_domain none)
+)
+
+(defhorizon "Silstrup BC" ISSS4
+(description "135-160 cm")
+(clay 0.246) (silt 0.134) (fine_sand 0.308) (coarse_sand 0.31) (humus 0.002)
+(dry_bulk_density 1.77 [g/cm^3])
+(normalize true) 
+(secondary_domain none)
+)
+
+(defhorizon "Silstrup Cc" ISSS4
+(description "160-200 cm")
+(clay 0.114) (silt 0.091) (fine_sand 0.249) (coarse_sand 0.173) (humus 0.001) ; Ikke målt humus men HYPRES skal ha lidt tror jeg 
+;(chalk 0.373)
+(normalize true) 
+(dry_bulk_density 1.77 [g/cm^3])
+(secondary_domain none)
+)
+
+
+			 ; Biopores
+(defbiopore common matrix
+  (K_wall_relative 1 [%]))
+
+			 ; Common matrix biopores from Rorrendegaard
+(defbiopore "matrix_all_BB"
+  (common (height_start 0 [cm])
+          (height_end -120 [cm])
+          (density 26 [m^-2])
+          (diameter 4 [mm]))) 
+
+			 ; Flakkebjerg 
+(defbiopore "flak_drain_2mm"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 2 [mm])
+          (pipe_position -110 [cm])
+          (density (plf x (range [m^-2])
+	           (domain [cm])
+	           (points (0 4)(50 0))))))
+
+(defbiopore "flak_drain_10mm"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 10 [mm])
+          (pipe_position -110 [cm])
+          (density (plf x (range [m^-2])
+	           (domain [cm])
+	           (points (0 0.75)(50 0))))))   
+
+			 ; Flakkebjerg Wheel Track 	                
+(defbiopore "flak_drain_WT"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 10 [mm])
+          (pipe_position -110 [cm])
+          (density 0.75 [m^-2])))
+
+			 ; Rorrendegaard
+;; Drain biopore
+(defbiopore "ror_drain_2mm"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 2 [mm])
+          (pipe_position -110 [cm])
+          (density (plf x (range [m^-2])
+	           (domain [cm])
+	           (points (0 1.76)(50 0))))))
+
+(defbiopore "ror_drain_6mm"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 6 [mm])
+          (pipe_position -110 [cm])
+          (density (plf x (range [m^-2])
+	           (domain [cm])
+	           (points (0 0.74)(50 0))))))
+
+			 ; Rorrendegaard Wheel Track 
+(defbiopore "ror_drain_WT"
+  (drain  (height_start 0 [cm])
+          (height_end -90 [cm])
+          (diameter 6 [mm])
+          (pipe_position -110 [cm])
+          (density 0.74 [m^-2])))	
+
+			 ;  Estrup uses biopore description from flakkebjerg
+			 ; Silstrup uses biopore description from flakkebjerg 
+
+
+;; Defining coloumn 2D
+(defcolumn "Flakkebjerg 2D" default
+  (Bioclimate original (pet deBruin87))
+  (OrganicMatter none)
+  (Soil (MaxRootingDepth 100 [cm])
+        (horizons (-3 "Flakkebjerg Ap surface")
+	     (-15 "Flakkebjerg Ap")
+	     (-25 "Flakkebjerg Ap ani")
+	     (-33 "Flakkebjerg Bplow")
+	     (-100 "Flakkebjerg Bt")
+	     (-200 "Flakkebjerg Cc(g)")))
+  (Movement rectangle
+            (matrix_water (Mollerup (K_average geometric)) (v+h)) 
+            (drainpoints (-110.0 [cm] 1 [cm]))         
+            (Geometry (zplus -1.5 -3 
+                             -5.5 -10 -14 -18 -22 -25 
+                             -27 -30 -33              
+                             -40 -50 -60 -75 -90 -100 -120 
+                             -125 -150 -170 -200[cm])
+                      (xplus 25 50 100 150 300 500 650 800 [cm]))
+            (Tertiary (biopores (classes ("matrix_all_BB")
+              		  ("flak_drain_2mm")	
+                     	      	  ("flak_drain_10mm"))))) 			   
+  (Groundwater aquitard
+  	  (pressure_table const -150 [cm])
+               (K_aquitard 0.1 [mm/h])
+               (Z_aquitard 200 [cm]))
+  )
+
+(defcolumn "Rorrende 2D" default
+  (Bioclimate original (pet deBruin87))
+  (OrganicMatter none) 	
+  (Soil (MaxRootingDepth 150 [cm])
+        (horizons (-3 "Rorrende Ap surface")
+        	     (-15 "Rorrende Ap")
+        	     (-25 "Rorrende Ap ani")
+                  (-33 "Rorrende Bplow")
+                  (-120 "Rorrende Bt")
+                  (-200 "Rorrende C"))
+			 ;(dispersivity 50 [cm])         
+        (border -27 [cm])         
+        (zones ((box  (top finite -33 [cm]) (bottom finite -120 [cm])
+	         (left finite 0 [cm]) (right finite 25 [cm]))
+                "Drain_ditch"))
+        )
+  (Movement rectangle
+            (matrix_water (Mollerup (K_average geometric)) (v+h)) 
+            (drainpoints (-110.0 [cm] 1 [cm]))
+            (Geometry (zplus -1.5 -3 
+		   -5.5 -10 -14 -18 -22 -25 
+		   -27 -30 -33              
+		   -40 -50 -60 -75 -90 -100 -120 
+		   -125 -150 -170 -200 [cm])
+                      (xplus 25 50 100 150 300 500 650 800 [cm])) 
+            (Tertiary (biopores 
+                       (classes ("matrix_all_BB")
+                     	      ("ror_drain_2mm")
+                     	      ("ror_drain_6mm")
+                     	      ))))                         
+  (Groundwater aquitard
+  	  (pressure_table const -120 [cm])
+        	  (K_aquitard 0.35 [mm/h])
+        	  (Z_aquitard 200 [cm]))
+  )
+
+(defcolumn Fast "Rorrende 2D"
+  (Chemistry none) (Movement vertical (matrix_water lr)))
+
+;; soil.dai ends here
