@@ -11,15 +11,6 @@
 	  (source table (file "Control_hourly_daisy.dwf")))
 	 ((source table (file "Control_daily_daisy.dwf")))))
 
-(defweather GRQ combine ;; Eelde, Holland, NL
-  (entry ((use Precip)
-	  (source table (file "Eelde_rain_hourly.dwf")))
-	 ((source table (file "Eelde_daily.dwf")))))
-
-(defweather Chemnitz combine ;; Chemnitz, Saxony, DE
-  (entry ((use Precip)
-	  (source table (file "Chemnitz_rain_hourly.dwf")))
-	 ((source table (file "Chemnitz_daily.dwf")))))
 
 ;;; climate.dai ends here.
 

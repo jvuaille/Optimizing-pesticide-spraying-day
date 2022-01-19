@@ -36,10 +36,7 @@
 	  "Surface DFF WW SPRING"
 	  "Daily Hussar OD WW"
 	  "Drain Hussar OD WW"
-	  "Surface Hussar OD WW"
-	  "Daily Atlantis OD"
-	  "Drain Atlantis OD"
-	  "Surface Atlantis OD")) 	
+	  "Surface Hussar OD WW")) 	
 
 (run "WW_spray_all")
 
